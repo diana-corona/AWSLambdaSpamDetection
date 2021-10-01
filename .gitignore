@@ -1,0 +1,4 @@
+app/.serverless/*
+app/__pycache__/*
+app/env/*
+app/node_modules/*

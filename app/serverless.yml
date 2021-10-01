@@ -1,0 +1,38 @@
+service: serverless-spam-detection  ##name of the service
+
+plugins:
+  - serverless-python-requirements
+provider:
+  name: aws
+  runtime: python3.7 ##python version
+  region: us-east-1 ##region of s3 bucket with model 
+
+  deploymentBucket:
+    name: serverless-spam-detection ## name of s3 bucket with model 
+
+  iamRoleStatements: ## allow role to read from s3 
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+      Resource:
+        - "arn:aws:s3:::serverless-spam-detection/*"  ## name of s3 bucket with model 
+
+custom:
+  pythonRequirements:
+    slim: true
+    layer: true ## add requirements as layer
+    useDownloadCache: true 
+    useStaticCache: true
+    noDeploy:
+      - pytest
+
+functions:
+  classify_message_lambda:
+    name:  classify_message_lambda ## aws lambda function
+    description: serverless spam detection lambda
+    handler: main.lambda_handler ## file with lambda_handler function
+    layers:
+      - Ref: PythonRequirementsLambdaLayer ## add requirements as layer
+      - arn:aws:lambda:us-east-1:446751924810:layer:python-3-7-scikit-learn-0-22-0:3 ## add sklearn as layer
+    events:  
+      - http: GET /spams
