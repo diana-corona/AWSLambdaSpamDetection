@@ -41,14 +41,3 @@ In the serverless.yml
 Deploy 
 1. In the /app folder, run 'serverless deploy' to upload the lambda function to aws
 
-Test
-1. Once deployed, the lambda function can be tested by running
-```
-curl -X POST <url> -d  <message>
-```
-for example
-```
-curl -X POST https://url.amazonaws.com/dev/classify_message -d  "Is this spam?"
-```
-
-
