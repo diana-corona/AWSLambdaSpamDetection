@@ -1,11 +1,14 @@
 service: serverless-spam-detection  ##name of the service
 
+configValidationMode: error
+
 plugins:
   - serverless-python-requirements
 provider:
   name: aws
   runtime: python3.7 ##python version
   region: us-east-1 ##region of s3 bucket with model 
+  lambdaHashingVersion: 20201221
 
   deploymentBucket:
     name: serverless-spam-detection ## name of s3 bucket with model 
@@ -35,4 +38,7 @@ functions:
       - Ref: PythonRequirementsLambdaLayer ## add requirements as layer
       - arn:aws:lambda:us-east-1:446751924810:layer:python-3-7-scikit-learn-0-22-0:3 ## add sklearn as layer
     events:  
-      - http: GET /spams
+      - http: 
+          path:  /spams
+          method: GET
+          authorizer: aws_iam
