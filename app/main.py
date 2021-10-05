@@ -35,4 +35,4 @@ def classify_message(message):
 
 def lambda_handler(event, context):
 	result = json.dumps(classify_message(event))
-	return{ "statusCode": 200, "body": result}
+	return{ "statusCode": 200, "headers": {"Access-Control-Allow-Headers" : "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token","Access-Control-Allow-Credentials":"true","Access-Control-Allow-Origin": "*","Access-Control-Allow-Methods": "GET"} , "body": result}
