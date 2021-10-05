@@ -41,3 +41,7 @@ In the serverless.yml
 Deploy 
 1. In the /app folder, run 'serverless deploy' to upload the lambda function to aws
 
+### Create a custom authenticator
+1. To Use/Create API Gateway Lambda authorizers follow: https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html
+2. To test the authorizer with postman follow: https://docs.aws.amazon.com/apigateway/latest/developerguide/call-api-with-api-gateway-lambda-authorization.html
+
