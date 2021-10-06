@@ -1,4 +1,4 @@
-# FastAPISpamDetection
+# AWS Lambda SpamDetection
 
 ### Spam Text Message Classification Data
 Obtained from

@@ -39,7 +39,7 @@ functions:
       - arn:aws:lambda:us-east-1:446751924810:layer:python-3-7-scikit-learn-0-22-0:3 ## add sklearn as layer
     events:  
       - http: 
-          path:  /spams
+          path:  /mlpclassifiers
           method: GET
           cors: true
           authorizer:
@@ -48,3 +48,36 @@ functions:
             identitySource: method.request.header.Authorization
             identityValidationExpression: .*
             type: token
+      - http: 
+          path:  /kneighbors
+          method: GET
+          cors: true
+          authorizer:
+            arn: arn:aws:lambda:us-east-1:086948990359:function:spam-authorizer-lambda  ## aws lambda authorizer function
+            resultTtlInSeconds: 0
+            identitySource: method.request.header.Authorization
+            identityValidationExpression: .*
+            type: token
+      - http: 
+          path:  /decisiontrees
+          method: GET
+          cors: true
+          authorizer:
+            arn: arn:aws:lambda:us-east-1:086948990359:function:spam-authorizer-lambda  ## aws lambda authorizer function
+            resultTtlInSeconds: 0
+            identitySource: method.request.header.Authorization
+            identityValidationExpression: .*
+            type: token
+      - http: 
+          path:  /randomforests
+          method: GET
+          cors: true
+          authorizer:
+            arn: arn:aws:lambda:us-east-1:086948990359:function:spam-authorizer-lambda  ## aws lambda authorizer function
+            resultTtlInSeconds: 0
+            identitySource: method.request.header.Authorization
+            identityValidationExpression: .*
+            type: token
+
+
+
