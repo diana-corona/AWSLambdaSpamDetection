@@ -6,21 +6,7 @@ Obtained from
 https://www.kaggle.com/team-ai/spam-text-message-classification
 
 ### Trainning 
-The data was preprocessed by 
-1. Removing HTML markup tags
-1. Removing punctuation marks
-1. Removing capital letters
-
-The model was trainned using MLPClassifier
-1. TFIDF vectorizer
-1. 700 hidden layers 
-1. Relu activation function
-1. Adam Optimization Algorithm 
-1. Constant learning rate
-
-MLPClassifier
-
-https://scikit-learn.org/stable/modules/neural_networks_supervised.html
+https://github.com/diana-corona/FastAPISpamDetection/tree/AWSLambda
 
 ### Create AWS lambda
 1. Install serverless https://www.serverless.com/framework/docs/getting-started/
