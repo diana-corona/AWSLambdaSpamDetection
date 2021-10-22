@@ -6,7 +6,7 @@ Obtained from
 https://www.kaggle.com/team-ai/spam-text-message-classification
 
 ### Trainning 
-https://github.com/diana-corona/FastAPISpamDetection/tree/AWSLambda
+https://github.com/diana-corona/FastAPISpamDetection/tree/Docker/app/training
 
 ### Create AWS lambda
 1. Install serverless https://www.serverless.com/framework/docs/getting-started/
