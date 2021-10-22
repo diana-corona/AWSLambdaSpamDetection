@@ -22,6 +22,7 @@ provider:
 
 custom:
   pythonRequirements:
+    pythonBin: python3
     slim: true
     layer: true ## add requirements as layer
     useDownloadCache: true 
