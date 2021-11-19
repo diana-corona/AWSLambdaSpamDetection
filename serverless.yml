@@ -15,10 +15,21 @@ provider:
 
   iamRoleStatements: ## allow role to read from s3 
     - Effect: Allow
-      Action:
+      Action: 
         - s3:GetObject
       Resource:
         - "arn:aws:s3:::serverless-spam-detection/*"  ## name of s3 bucket with model 
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "arn:aws:dynamodb:us-east-1:086948990359:table/spam-detection-users" 
+
 
 custom:
   pythonRequirements:
@@ -79,6 +90,18 @@ functions:
             identitySource: method.request.header.Authorization
             identityValidationExpression: .*
             type: token
+  login_user_lambda:
+    name:  login_user_lambda ## aws lambda function
+    description: serverless spam detection login user lambda function
+    handler: login.login_handler ## file with lambda_handler function
+    events:  
+      - http: 
+          path:  /login
+          method: GET
+          cors: true
+          
+     
+
 
 
 
