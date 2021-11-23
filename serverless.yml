@@ -94,10 +94,24 @@ functions:
     name:  login_user_lambda ## aws lambda function
     description: serverless spam detection login user lambda function
     handler: login.login_handler ## file with lambda_handler function
+    layers:
+      - Ref: PythonRequirementsLambdaLayer ## add requirements as layer
     events:  
       - http: 
           path:  /login
           method: GET
+          cors: true
+
+  create_user_lambda:
+    name:  create_user_lambda ## aws lambda function
+    description: serverless spam detection create user lambda function
+    handler: create_user.create_user_handler ## file with lambda_handler function
+    layers:
+      - Ref: PythonRequirementsLambdaLayer ## add requirements as layer
+    events:  
+      - http: 
+          path:  /create_user
+          method: POST
           cors: true
           
      
